@@ -14,8 +14,9 @@ class Page < ActiveRecord::Base
   end
 
   def total_words
-    count = title.split(/\s+/).count
-    count += content.split(/\s+/).count
+    # One two one-word four
+    count = title.split(/[a-z|\-]+/i).count
+    count += content.split(/[a-z|\-]+/i).count
     count
   end
 end
