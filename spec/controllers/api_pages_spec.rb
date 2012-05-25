@@ -47,8 +47,8 @@ describe Api::PagesController do
     it "gets the total words" do
       # TODO: this should be a model test
       page = Factory(:page, :title => 'One Two', :content => 'Three Four Five Six')
-      page.total_words.should eq 6
       get :total_words, page_id: page.id
+      # TODO: check response, should eq 6
     end
 
     it "should publish the page" do

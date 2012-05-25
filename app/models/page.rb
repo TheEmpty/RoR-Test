@@ -2,7 +2,7 @@ class Page < ActiveRecord::Base
   attr_accessible :title, :content, :published_on
 
   def published # leave off question mark, causes problems with APIs
-    published_on? and published_on > Time.now.utc
+    published_on.present? and Time.now.utc > published_on
   end
 
   def as_json(options={})
@@ -15,8 +15,8 @@ class Page < ActiveRecord::Base
 
   def total_words
     # One two one-word four
-    count = title.split(/[a-z|\-]+/i).count
-    count += content.split(/[a-z|\-]+/i).count
+    count = title.split(/[^a-z|-]+/i).count
+    count += content.split(/[^a-z|-]+/i).count
     count
   end
 end
