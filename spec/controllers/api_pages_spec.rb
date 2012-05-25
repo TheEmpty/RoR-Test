@@ -45,7 +45,6 @@ describe Api::PagesController do
     end
 
     it "gets the total words" do
-      # TODO: this should be a model test
       page = Factory(:page, :title => 'One Two', :content => 'Three Four Five Six')
       get :total_words, page_id: page.id
       # TODO: check response, should eq 6
