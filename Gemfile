@@ -2,10 +2,17 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 gem 'jquery-rails'
-gem 'factory_girl_rails'
+
 gem 'rspec-rails', '~> 2.0', :group => [:test, :development]
 gem 'sqlite3', :group => [:test, :development]
-gem 'pg', :group => [:production]
+
+group :test do
+  gem 'factory_girl_rails'
+end
+
+group :production do
+  gem 'pg'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
